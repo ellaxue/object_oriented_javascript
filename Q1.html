@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<!--  header before printing literal object -->
+<h3>Creating a JavaScript Object using Literal</h3>
+<!--  object created by literal -->
+<p id="literal"></p>
+<!--  header before printing constuctor object -->
+<h3>Creating a JavaScript Object using constuctor function</h3>
+<!--  object created yb constuctor function -->
+<p id="constuctor "></p>
+
+<script>
+// literal to create object
+var obj1= {name:"Object 1", created_by:"literal"};
+
+// constuctor function to create and init object
+function object2(name, created_by) {
+    // init name
+    this.name = name;
+    // init created_by
+    this.created_by= created_by;
+    // function to generate alerts
+    this.whoAmI = function(){
+        alert('I am ' + this.name);
+    };
+}
+
+//instantiate the constructor
+var obj2 = new object2("Object 2", "constructor funtion");
+
+//update the text using object created by literal
+document.getElementById("literal").innerHTML =
+obj1.name+ " is created by " + obj1.created_by;
+//update the text using object created by constructor function
+document.getElementById("constuctor ").innerHTML =
+obj2.name+ " is created by " + obj2.created_by;
+//access method to open an alert
+obj2.whoAmI();
+</script>
+</body>
+</html>
+
