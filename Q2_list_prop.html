@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h3>List all properities of an object using built-in method</h3>
+<p id="list1"></p>
+<h3>List all properities and values of an object using polyfill method</h3>
+<p id="list2"></p>
+
+<script>
+// literal to create a example object
+var person = {name:"Person", age:"50", height:"5'5", weight:"150lb"};
+
+// ployfill to get keys
+var getKeys = function(obj){
+   var keys = [];
+   for(var key in obj){
+      keys.push(key);
+   }
+   return keys;
+}
+
+//update the list with build-in method
+document.getElementById("list1").innerHTML =
+Object.keys(person);
+
+//update the list with polyfill method
+var fruits = [];
+for(var key in person) {
+    fruits.push(key + ": ");
+    fruits.push(person[key]);
+}
+document.getElementById("list2").innerHTML = fruits.join("<br>") ;
+</script>
+</body>
+</html>
+
