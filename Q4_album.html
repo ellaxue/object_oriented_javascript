@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Add a new photo</p>
+<input type="text" id="file_name" value="">
+<input type="text" id="location" value="">
+<p>Click to add this photo</p>
+<button onclick="myFunction()">Add</button>
+<h3>Album</h3>
+<p id="album"></p>
+
+<script>
+var album_output = [];
+function photo(file_name , location)
+{
+   this.file_name = file_name ;
+   this.location = location;
+};
+
+function album ()
+{
+   this.photos = [];
+   this.addNew = function(photo)
+   {
+      this.photos.push(photo);
+   };
+   this.print = function()
+   {
+      album_output = [];
+      this.photos.forEach(function (photoItem)
+      {
+         album_output.push("Photo " + photoItem.file_name + " taken at Location: " + photoItem.location)
+         document.getElementById("album").innerHTML = album_output.join("<br>--------<br>");
+    });
+   };
+};
+
+var new_album = new album();
+function myFunction() 
+{
+    var new_photo = new photo(document.getElementById("file_name").value, document.getElementById("location").value);
+    new_album.addNew(new_photo);
+    new_album.print();
+};
+</script>
+</body>
+</html>
+
