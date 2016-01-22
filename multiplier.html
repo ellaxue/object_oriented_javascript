@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Input a number</p>
+<input type="text" id="number" value="">
+<p>Click run Multiplier.</p>
+<button onclick="myFunction()">Try it</button>
+<p id="answer"></p>
+
+<script>
+var multiplier = new Multiplier();
+function Multiplier () 
+{
+    var answer = 0;
+    this.multiply = function()
+    {
+        if (answer == 0)
+        {
+            answer = document.getElementById("number").value;
+        }
+        else
+        {
+            answer = answer * document.getElementById("number").value;
+        }
+    };
+    this.getCurrentValue = function()
+    {
+        return answer;
+    };
+}
+
+function myFunction ()
+{
+    multiplier.multiply();
+    document.getElementById("answer").innerHTML = multiplier.getCurrentValue();
+}
+</script>
+
+</body>
+</html>
+
