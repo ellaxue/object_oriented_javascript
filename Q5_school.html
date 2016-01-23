@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Add a new student</p>
+<input type="text" id="ID" value="">
+<p>Click to add this student</p>
+<button onclick="add_student()">Add</button>
+
+<p>Add a new teacher</p>
+<input type="text" id="course" value="">
+<p>Click to add this teacher</p>
+<button onclick="add_teacher()">Add</button>
+
+<p>Click to print school info</p>
+<button onclick="print_school()">Print</button>
+
+<h3>School</h3>
+<p id="school"></p>
+
+<script>
+function Person ()
+{
+   this.kind = "I am a person";
+};
+
+Student.prototype = new Person();
+function Student (ID)
+{
+   this.ID = ID;
+};
+
+Teacher.prototype = new Person();
+function Teacher (course)
+{
+   this.course = course;
+};
+
+function School()
+{
+   this.students= [];
+   this.teachers= [];
+   this.addNewS = function(student)
+   {
+      this.students.push(student);
+   };
+   this.addNewT = function(teacher)
+   {
+      this.teachers.push(teacher);
+   };
+   this.print = function()
+   {
+      var school_output = [];
+      this.students.forEach(function (s)
+      {
+         school_output .push("Student kind: " + s.kind + " with ID: " + s.ID)
+      });
+      this.teachers.forEach(function (t)
+      {
+         school_output .push("Student kind: " + t.kind + " teaching: " + t.course)
+      });
+
+      document.getElementById("school").innerHTML = school_output.join("<br>--------<br>");
+   };
+};
+
+var new_school = new School();
+function add_student() 
+{
+    var new_s = new Student(document.getElementById("ID").value);
+    new_school.addNewS(new_s);
+};
+function add_teacher() 
+{
+    var new_t = new Teacher(document.getElementById("course").value);
+    new_school.addNewT(new_t);
+};
+function print_school() 
+{
+    new_school.print();
+};
+
+</script>
+</body>
+</html>
